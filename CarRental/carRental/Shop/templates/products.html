@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+<title>{% block title %} Ace {% endblock %}</title>
+{% block content %}
+  <div class="bg-color">
+    <!-- Fillon Container card-items -->
+
+    <div class="container-fluid px-5" >
+      <div class="row px-5">
+        {% for product in products %}
+        <div class="col-12 col-md-6 col-lg-3">
+      <div class="card h-100">
+        <img src="{{ product.product_image.url }}" class="card-img-top" alt="{{product.product_name}}" height="230px">
+        <div class="card-body">
+          <h5 class="card-title">{{product.product_name}}</h5>
+          <p class="card-text">{{product.product_text}} </p>
+
+        </div>
+        <div class="card-body">
+          <a style="padding-right: 15%;">{{product.product_price}}</a>
+          <button type="button" class="button2" data-toggle="modal" data-target="#second1">
+          Buy
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="second1" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5  class="modal-title" id="staticBackdropLabel1">Order</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 <div class="container"></div>
+                 <form action="" method="POST">
+                   {% csrf_token %}
+                   <div>
+                     <br>
+                     <label for="product">Product</label>
+                     <input type="text" name="product" class="form-label" id="product">
+                   </div>
+                   <div class="mb-3">
+                    <br>
+                     <label   for="emri" class="form-label">Emri</label>
+                     <input style="margin-left: 5%;" type="text" name="name" class="form-controll" id="emri" >
+
+                   </div>
+                  <div class="mb-3">
+                    
+                    <label for="email" class="form-label">Email</label>
+                    <input style="margin-left: 4%;" type="email" name="email" class="form-label" id="email" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input style="margin-left: 3%;"type="tel" name="phone" class="form-label" id="phone" >
+                  </div>
+                  <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" name="quantity" class="form-label" id="quantity" >
+                  </div>
+                  <button type="submit" class="btn btn-outline-dark" id="order">Order</button>
+                 </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      {% endfor %}
+    </div>
+      </div>
+      
+  <!-- Mbaron Container Cart-ITEMS -->
+
+  {% endblock content %}

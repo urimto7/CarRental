@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.bg-color{
+    background-color: black;
+    
+}
+.nav-link{
+    color: black !important;
+  }
+/* Nav bar css */
+
+/* .srchicon{
+    width: 15px;
+    height: 15px;
+   
+} */
+/* .bagicon{
+    width: 15px;
+    height: 15px;
+} */
+
+
+/* .bag {
+    width: 20px;
+    height: 20px;
+}
+ */
+
+.btn-outline:hover{
+    color: #fff !important;
+} 
+
+/* end nevbar css */
+
+/* Container-Card Items */
+ .container-fluid{
+    margin-top: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    /* margin-left: 2rem; */
+    /* margin-right: 2rem; */
+ } 
+.flex{
+    margin: 60px 0 0;
+    display: flex;
+      flex-wrap: wrap;
+     justify-content: space-evenly;
+     align-content: space-around;
+    row-gap: 20px;
+    padding-bottom: 15px;
+    padding: 15px;
+} 
+.card-img-top:hover{
+    border: none;
+    background: black;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease; 
+    
+}
+.card{
+    border-radius: 30px;
+    background-color: black !important;
+}
+h5,p,a{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+.card-body{
+    color: white;
+}
+img{
+    background-color: black;
+    height: 250px;
+
+}
+button{
+    
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    
+}
+.card{
+    background-color: black;
+}
+.social-media{
+    display: flex;
+    margin: 2rem;
+    margin-left: 3rem;
+}
+#text-color{
+    color: black;
+
+}
+.sub{ 
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+
+}
+/* end Container-Card Items */
+/* footer */
+ul{
+    list-style: none;
+}
+#questions{
+list-style-type: upper-roman;
+}
+
+.loggo{
+    width: 300px;
+    height: 200px;
+    position: relative;
+    right: 55%;
+
+}
+
+
+/* footer */
+.button2{
+    border: none;
+    background-color: #F8F8FF;
+    color: black;
+}
+@media only screen and (max-width: 480px) {
+    .loggo {
+      width: 100%;
+      left: 2%;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    .loggo {
+      width: 100%;
+      left: 2%;
+    }
+  }
+   @media only screen and (max-width: 800px) {
+    .loggo {
+      width: 100%;
+      left: 2%;
+    }
+    .mapp{
+        width: 100%;
+      right: 6%;
+    }
+  } 
+  @media only screen and (max-width: 1100px) {
+    .mapp {
+      width: 100%;
+      right: 2%;
+    }
+  }
+
+.button3{
+    border: none;
+    background-color: #F8F8FF;
+    color: black;
+    border-radius: 5px;
+padding: 10px 30px;
+
+}
+#order{
+margin-left: 85%;
+}
+
+.modal-body{
+    background-color:#fff;
+}
+svg{
+    color: black;
+}
+h5{
+    color: #000;
+}
+a{
+    color: #000;
+}
+label{
+    color: #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+/* form{
+    width: 100%;
+} */

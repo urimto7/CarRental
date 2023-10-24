@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'style1.css' %}">
+{% endblock %}
+<title>{% block title %} Ace {% endblock %}</title>
+{% block content %}
+
+  <div class="banner">
+    <video autoplay muted loop>
+      <source src="{% static 'videos/pexels-taryn-elliott-5309381.mp4' %}" type="video/mp4"> 
+    </video>
+  </div>
+   <div class="welcome-text">
+     <h1><b>Ace Car</b></h1>
+     <h3><b>Rental</b></h3>
+      
+    </div>
+
+  <div id="name">
+    <h2><em>Find The Best</em> Car For You</h2>
+    <p>Not elegant but extravagant. Not conventional but individual.</p>
+  </div>
+  <div class="container-fluid logo">
+    <div class="row py-5">
+        {% for mark in marks %}
+      <div class="col-md-3">
+        <div class="card h-100">
+          <a href="{% url 'rentpage' %}">
+          <img src="{{mark.mark_image.url}}" class="card-img-top"  alt="..."></a>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+  <div id="name">
+    <h2><em>Get The Best</em> Product From Us.</h2>
+    <p><em><b>Just One Click Away.</b></em></p>
+  </div>
+  <div class="container-fluid logo">
+    <div class="row py-5">
+        {% for mark in marks %}
+      <div class="col-md-3">
+        <div class="card h-100">
+          <a href="{% url 'product' %}">
+          <img src="{{mark.mark_logo.url}}" class="card-img-top" alt="...">
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+    <div class="about" id="aboutus">
+    <h2><em>About Us.</em></h2><br>
+    <h5>Established in Tirana</h5>
+    <p>Ace Car prides itself in being the leading prestige and performance self drive hire car company in the industry.
+      Established to appeal to individuals looking for a specific car hire service we are proud to offer only the latest
+      and most sought after supercars in the world. A fleet of current luxury prestige and super cars professionally
+      stored in Tirana, expertly serviced and maintained, always a
+      client can select the perfect car to suit their individual needs. For more information about our services, call us
+      on +355 69 21 70 712 to speak to our car hire specialists.</p>
+
+</div>
+<div class="about1">
+  <h2><em>Our Mission</em></h2><br>
+  <h5>EXCEPTIONAL CARS, EXCEPTIONAL SERVICE</h5>
+  <p>
+    Our mission, quite simply is to be the best prestige car hire company in the business. We take pride in every
+    aspect of our business, from the minute we pick up the phone to the day we deliver your car.</p>
+  <p>We have a highly skilled customer service department who know all our cars inside out. This means that when you
+    book a car with us you can be confident that you will know exactly all the car has to offer in terms of
+    specification, colour and interior finish ensuring you get the right car for your hire experience. We believe
+    service is the most important parts of our business, so if you want a car we do not stock, we will endeavor to
+    find the car you do want.</p>
+  <p>Ace Car aim to handover only truly exceptional vehicles to our clients. To that end we employ a dedicated valet
+    team who are trained to maintain each vehicle to a ‘showroom plus’ standard. Vehicles are never released without a
+    through interior and exterior examination, full preparation and mechanical checks.</p>
+</div>
+ 
+{% endblock content %}

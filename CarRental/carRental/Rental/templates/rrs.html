@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RENTAL</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'rent.css' %}">
+  </head>
+<body>
+  {% include 'navbar.html' %}
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators"  data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="3"class="active"></li>
+                </ol>
+                <div class="carousel-inner">
+                    {% for image in image %}
+                  <div class="carousel-item {% if forloop.first%} active {% endif %}">
+                    <img src="{{image.image_image.url}}" class="d-block w-100" alt="...">
+                  </div>
+                  {% endfor %}
+                 
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev" ">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </button>
+              </div>
+          </div>
+     
+      <!-- BOOK NOW -->
+          <div class="col-lg-4">
+         <form method="POST" >
+          {% csrf_token %}
+          {% include 'messages.html' %}
+            <h1 style="color: white;">BOOK NOW </h1>
+           <br>
+           <!-- SELECT -->
+           <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">PICKUP LOCATION</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" name="book">
+              <option selected>Choose...</option>
+              <option value="HEADQUARTER">HEADQUARTER</option>
+              {% if book == "TIRANA INTERNATIONAL AIRPORT" %}
+              <option value="TIRANA INTERNATIONAL AIRPORT" selected>TIRANA INTERNATIONAL AIRPORT</option>
+              {% else %}
+              <option value="TIRANA INTERNATIONAL AIRPORT" >TIRANA INTERNATIONAL AIRPORT</option>
+              {% endif %}
+
+            </select>
+          </div>
+          
+          <div class="input-group mb-3">
+            <select class="custom-select" id="inputGroupSelect02"name="book1">
+              <option selected>Choose...</option>
+              <option value="1">HEADQUARTER</option>
+              {% if book1 == "TIRANA INTERNATIONAL AIRPORT" %}
+              <option value="TIRANA INTERNATIONAL AIRPORT" selected>TIRANA INTERNATIONAL AIRPORT</option>
+              {% else %}
+              <option value="TIRANA INTERNATIONAL AIRPORT" >TIRANA INTERNATIONAL AIRPORT</option>
+              {% endif %}
+            </select>
+            <div class="input-group-append">
+              <label class="input-group-text" for="inputGroupSelect02">DROPOFF LOCATION</label>
+            </div>
+          </div>
+          <br>
+          <!-- INPUT -->
+
+          <div class="input-group">
+            <div class="input-group-prepend mb-3">
+              <span class="input-group-text"style="background-color: rgb(0, 0, 0); color:white" >PICKUP DATE & TIME</span>
+            </div>
+            <input type="datetime-local" id="pickup " name="book2">
+          </div>
+          <br>
+          <br>
+        <!-- INPUT -->
+        <div class="input-group">
+          <div class="input-group-prepend mb-3">
+            <span class="input-group-text" style="background-color: rgb(0, 0, 0); color:white ">DROPOFF DATE & TIME</span>
+          </div>
+          <input type="datetime-local" id="pickup" name="book3">
+        </div>
+<br>
+<br>
+<br>
+<button type="submit" class="btn btn-secondary btn-lg btn-block"  name="book" >SUBMIT</button>
+
+
+       </div>
+        
+      </div>
+    
+        </div>
+    
+      </form>
+  
+      
+        <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+        <!-- COMMENT -->
+        <h1 style="color:white; margin-left: 10%; margin-bottom: 3%;  ">VEHICLE OVERVIEW</h1>
+       
+        <div class="overview ">
+    <div class="row1">
+      <!--  -->
+      <div class="margin-top-5 col-6 col-md-4 col-lg-3" >
+        <div class="d-flex" >
+          <svg  stroke="#000" fill="#fff" viewBox="0 0 24 24" class="icon margin-right-2 margin-right-sm-3 flex-shrink-0 icon-color-default" style="width:36px;height:36px;stroke-width:0.6666666666666666">
+            <path d="M22.29 16.1l1.15-.29a.1.1 0 00.09-.1s0-1.26.05-1.51a.66.66 0 00-.23-.5c-.07-.18-.42-1-.85-1.13s-4.41-.74-4.74-.79a34.91 34.91 0 00-4.33-1.85 18.88 18.88 0 00-3.27-.21 18.35 18.35 0 00-3.06.19 29.23 29.23 0 00-4 1.46l-1.87.27a.1.1 0 00-.09.08l-.25 1.44a2.08 2.08 0 00-.4.69 1.85 1.85 0 00.07 1v0l.45.64a.1.1 0 00.06 0l1.63.58" >
+            
+            </path>
+            <path d="M17.87 15.82a1.61 1.61 0 101.61-1.61 1.61 1.61 0 00-1.61 1.61zM4.16 15.82a1.61 1.61 0 101.61-1.62 1.61 1.61 0 00-1.61 1.62zM16.19 16.5H8.75"></path>
+          </svg>
+          <div class="d-flex flex-column">
+            <div class="heading-4" data-qa="Heading" style="font-size: 1.5rem; font-weight: bold;">Style</div>
+            <p class="font-size-3">{{car.car_style}}</p>
+          </div></div></div>
+
+          <div class="margin-top-5 col-6 col-md-4 col-lg-3">
+            <div class="d-flex">
+              <svg  stroke="#000" fill="#fff" viewBox="0 0 24 24" class="icon margin-right-2 margin-right-sm-3 flex-shrink-0 icon-color-default" style="width:36px;height:36px;stroke-width:0.6666666666666666">
+                
+                <path d="M18.45 18.94l2.13-3.61 2.16 3.65"></path>
+                <path d="M22.67 18.86a2.54 2.54 0 01.46 1.33v.13a2.55 2.55 0 11-5.1 0v-.23a2.54 2.54 0 01.46-1.24"></path>
+                <circle cx="14.5" cy="9.5" r="1" fill="white"></circle>
+                <path d="M20.42 12.26L10.33 22.35 1.3 13.31 11.39 3.22M14.5 9V1M10.64 2.09l10.84 10.84"></path>
+              
+              </svg>
+              <div class="d-flex flex-column">
+                <div class="heading-4" data-qa="Heading"style="font-size: 1.5rem; font-weight: bold;">Exterior Color</div>
+                <p class="font-size-3">{{car.car_excolor}}</p>
+              </div></div></div>
+
+              <div class="margin-top-5 col-6 col-md-4 col-lg-3">
+                <div class="d-flex">
+                  <svg  stroke="#000" fill="#fff" viewBox="0 0 24 24" class="icon margin-right-2 margin-right-sm-3 flex-shrink-0 icon-color-default" style="width:36px;height:36px;stroke-width:0.6666666666666666">
+                    <path d="M7.7 17.5h8.6a3.2 3.2 0 013.2 3.2v.68a1.12 1.12 0 01-1.12 1.12H5.62a1.12 1.12 0 01-1.12-1.12v-.68a3.2 3.2 0 013.2-3.2zM6.5 16V8.54a3 3 0 013-3h4.92a3 3 0 013 3V16"></path>
+                    <rect height="3" width="7" rx="1.26" ry="1.26" x="8.5" y=".5"></rect>
+                    <path d="M8.39 15.23l7.23-7.97M12 3.5v2"></path></svg>
+                    <div class="d-flex flex-column">
+                      <div class="heading-4" data-qa="Heading"style="font-size: 1.5rem; font-weight: bold;">Interior Color</div>
+                      <p class="font-size-3">{{car.car_intcolor}}</p>
+                       </div></div></div>
+
+                       <div class="margin-top-5 col-6 col-md-4 col-lg-3">
+                         <div class="d-flex">
+                           <svg  stroke="#000" fill="#fff" viewBox="0 0 24 24" class="icon margin-right-2 margin-right-sm-3 flex-shrink-0 icon-color-default" style="width:36px;height:36px;stroke-width:0.6666666666666666">
+                             <path d="M3.5 23.32V2.86A1.55 1.55 0 015 1.32h8a1.55 1.55 0 011.5 1.54v20.46M15 10.32h.67s1.83-.32 1.83 1.85v7.65a2.5 2.5 0 002.5 2.5h0a2.5 2.5 0 002.5-2.5V8.88s.42-4.18-5-5"></path>
+                             <path d="M22 8.32h-1.22A1.28 1.28 0 0119.5 7V4.82M6.5 4.32h5v5h-5z"></path>
+                             <path d="M16 23.32H2"></path></svg>
+                             <div class="d-flex flex-column">
+                               <div class="heading-4" data-qa="Heading"style="font-size: 1.5rem; font-weight: bold;">MPG</div>
+                               <p class="font-size-3">{{car.car_mpg1}} cty / {{car.car_mpg2}} hwy</p>
+                              </div></div></div>
+
+                              <div class="margin-top-5 col-6 col-md-4 col-lg-3">
+                                <div class="d-flex">
+                                  <svg  stroke="#000" fill="#fff" viewBox="0 0 24 24" class="icon margin-right-2 margin-right-sm-3 flex-shrink-0 icon-color-default" style="width:36px;height:36px;stroke-width:0.6666666666666666">
+                                    <path d="M2.5 8.5h2.09l1.91-.82V6.5h9.12l2.92 6h1v-3h2.94a6.36 6.36 0 011.06 3.21v3.22c-.27.92-1.24 3.56-1.24 3.56h-2.8v-2h-2v2H8.9l-3.22-3H2.5zM7 3.5h8M11.5 3.5v3M.5 17V8M.5 12.5h2"></path></svg>
+                                    <div class="d-flex flex-column">
+                                      <div class="heading-4" data-qa="Heading"style="font-size: 1.5rem; font-weight: bold;">Engine</div>
+                                      <p class="font-size-3">{{car.car_engine}}</p>
+                                    </div></div></div>
+
+                                    <div class="margin-top-5 col-6 col-md-4 col-lg-3">
+                                      <div class="d-flex">
+                                        <svg  stroke="#000" fill="#fff" viewBox="0 0 24 24" class="icon margin-right-2 margin-right-sm-3 flex-shrink-0 icon-color-default" style="width:36px;height:36px;stroke-width:0.6666666666666666">
+                                          <path d="M7.5 4.5h10M7.5 19.5h10M12.5 4.5v15"></path>
+                                          <rect height="5" width="3" rx=".91" ry=".91" x="17.5" y="1.5"></rect>
+                                          <rect height="5" width="3" rx=".91" ry=".91" x="17.5" y="17.5"></rect>
+                                          <rect height="5" width="3" rx=".91" ry=".91" x="4.5" y="1.5"></rect>
+                                          <rect height="5" width="3" rx=".91" ry=".91" x="4.5" y="17.5"></rect></svg>
+                                          <div class="d-flex flex-column"><div class="heading-4" data-qa="Heading"style="font-size: 1.5rem; font-weight: bold;">Drive Type</div>
+                                          <p class="font-size-3">{{car.car_drivetype}}</p>
+                                        </div></div></div>
+
+                                        <div class="margin-top-5 col-6 col-md-4 col-lg-3">
+                                          <div class="d-flex"><svg  stroke="#000" fill="#fff" viewBox="0 0 24 24" class="icon margin-right-2 margin-right-sm-3 flex-shrink-0 icon-color-default" style="width:36px;height:36px;stroke-width:0.6666666666666666">
+                                            <path d="M5.48 7.77a2.31 2.31 0 01.65-1.61l1.55-1.6a2.26 2.26 0 011.63-.7h0a2.26 2.26 0 001.49-.56l2-1.49a2.08 2.08 0 011.49-.3h3.39a1.82 1.82 0 011.82 1.81v17.36a1.83 1.83 0 01-1.82 1.82H7.81a2.31 2.31 0 01-2.31-2.31z"></path>
+                                            <path d="M14.5 3.5h3"></path><path d="M3.86 5.2l3.03-3.16M8.84 9.97l8.17 8.17M17.01 9.97l-8.17 8.17"></path></svg>
+                                            <div class="d-flex flex-column">
+                                              <div class="heading-4" data-qa="Heading"style="font-size: 1.5rem; font-weight: bold;">Fuel Type</div>
+                                              <p class="font-size-3">{{car.car_fueltype}}</p>
+                                            </div></div></div>
+
+                                        <div class="margin-top-5 col-6 col-md-4 col-lg-3">
+                                          <div class="d-flex">
+                                            <svg  stroke="#000" fill="#fff" viewBox="0 0 24 24" class="icon margin-right-2 margin-right-sm-3 flex-shrink-0 icon-color-default" style="width:36px;height:36px;stroke-width:0.6666666666666666">
+                                              <circle cx="3.86" cy="3.55" r="1.59"></circle>
+                                              <circle cx="12.14" cy="3.55" r="1.59"></circle>
+                                              <circle cx="20.53" cy="3.55" r="1.59"></circle>
+                                              <circle cx="20.53" cy="20.13" r="1.59"></circle>
+                                              <circle cx="12.14" cy="20.13" r="1.59"></circle>
+                                              <path d="M3.86 5.14v8.56h5.32l2.96-1.89h8.4M20.53 5.14v13.4M12.14 5.14v13.4"></path></svg>
+                                              <div class="d-flex flex-column">
+                                                <div class="heading-4" data-qa="Heading"style="font-size: 1.5rem; font-weight: bold;">Transmission</div>
+                                                <p class="font-size-3">{{car.car_transmission}}</p>
+                                              </div></div></div>
+
+                             
+          <!--  -->
+    </div>
+      </div>
+         <br>
+         <br>
+        <br>
+        
+        <br>
+        <h1 style="color:white; margin-left: 10%; margin-bottom:3%;">STANDART FEATURES</h1>
+        <div class="row2 pb-5">
+          <ul class="d-flex flex-wrap list-bulleted padding-left-md-4">
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1" style="color:white;"><span class="dot"></span>{{car.car_ns}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_dpp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_fjdssp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_rrstp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_wcp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_cp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_bwlp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_edp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_lccvp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_sp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_8s}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_dvd}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_dp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_dp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_fccvp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_pcapp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_vcp}}</li>
+            <li class="_az604x margin-top-2 padding-right-4 padding-left-1"style="color:white;"><span class="dot"></span>{{car.car_amfm}}</li>
+          </ul>
+
+        </div>
+
+
+      </div>
+    </div>
+    {% include 'footer.html' %}
+
+
+      <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</body>
+</html>

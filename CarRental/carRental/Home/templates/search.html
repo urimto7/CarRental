@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'style1.css' %}">
+{% endblock %}
+<title>{% block title %} Ace {% endblock %}</title>
+{% block content %}
+<div class="container">
+  {% if searched %}
+  <h1 class="text-center display-1 my-5 wel-come">You searched for <b>{{ searched }}</b></h1>
+  <div class="row">
+    {% if venues %}
+    {% for venue in venues %}
+    <div class="col-md-4 col-12 mb-5">
+      <div class="card">
+        <img src="{{venue.car_image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{venue.car_mark}} {{venue.car_name}}</h5>
+          <p class="card-text">{{venue.car_text}}</p>
+          <p>{{venue.car_rating|safe}}</p>
+        </div>
+        <div class="card-body">
+          <a style="padding-right: 15%;">$ {{venue.car_price}}/ DAY</a>
+          <a href="car/{{venue.car_id}}" target="_blank" class="card-link">BOOK NOW </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+  <hr>
+  <div class="row">
+    {% if pro %}
+    {% for po in pro %}
+    <div class="col-12 col-md-6 col-lg-4 mb-5">
+      <div class="card h-100">
+        <img src="{{po.product_image.url }}" class="card-img-top img-fluid h-50" alt="{{po.product_name}}"
+          height="230px">
+        <div class="card-body">
+          <h5 class="card-title">{{po.product_name}}</h5>
+          <p class="card-text">{{po.product_text}} </p>
+
+        </div>
+        <div class="card-body">
+          <a style="padding-right: 15%;">{{po.product_price}}</a>
+          <button type="button" class="button2" data-toggle="modal" data-target="#second1">
+            Buy
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="second1" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel1">Order</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="container"></div>
+                  <form action="" method="POST">
+                    {% csrf_token %}
+                    <div>
+                      <br>
+                      <label for="product">Product</label>
+                      <input type="text" name="product" class="form-label" id="product">
+                    </div>
+                    <div class="mb-3">
+                      <br>
+                      <label for="emri" class="form-label">Emri</label>
+                      <input style="margin-left: 5%;" type="text" name="name" class="form-controll" id="emri">
+
+                    </div>
+                    <div class="mb-3">
+
+                      <label for="email" class="form-label">Email</label>
+                      <input style="margin-left: 4%;" type="email" name="email" class="form-label" id="email"
+                        aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="phone" class="form-label">Phone</label>
+                      <input style="margin-left: 3%;" type="tel" name="phone" class="form-label" id="phone">
+                    </div>
+                    <div class="mb-3">
+                      <label for="quantity" class="form-label">Quantity</label>
+                      <input type="number" name="quantity" class="form-label" id="quantity">
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark" id="order">Order</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+<div class="container">
+  {% if messages %}
+  {% for k in messages %}
+  <h5 class="text-center">{{k}}</h5>
+  <p class="text-center display-1 text-light mt-5">Car Not Found</p>
+  <h4 class="text-center fw-bold mt-3 text_404 text-light">404</h4>
+  {% endfor %}
+  {% endif %}
+</div>
+{% endblock content %}  
